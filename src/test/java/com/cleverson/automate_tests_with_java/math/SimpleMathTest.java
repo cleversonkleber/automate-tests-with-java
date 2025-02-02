@@ -7,6 +7,7 @@ import org.springframework.test.util.AssertionErrors;
 public class SimpleMathTest {
 
     SimpleMath math;
+
     @BeforeAll
     static void setup(){
         System.out.println("Running @BeforeAll method!");
@@ -29,11 +30,21 @@ public class SimpleMathTest {
     }
 
 
-    @Disabled("TODO: wen still work on it!")
+//    @Disabled("TODO: wen still work on it!")
     @Test
     @DisplayName("Divide por zero")
     void testDivision_When_FirstNumberIDivisidedByZero(){
-        AssertionErrors.fail(null);
+        //Given
+        double fistNumber = 6.2D;
+        double secondNumber = 0D;
+        var expectedMessege = "Impossivel dividir por zero";
+
+        ArithmeticException actual = Assertions.assertThrows(ArithmeticException.class, ()->{
+            //When
+           math.division(fistNumber, secondNumber);
+        }, ()-> "Impossivel dividir por zero");
+        //then
+        Assertions.assertEquals(expectedMessege, actual.getLocalizedMessage());
     }
 
     @Test
