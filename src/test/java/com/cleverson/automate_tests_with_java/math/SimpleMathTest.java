@@ -1,13 +1,33 @@
 package com.cleverson.automate_tests_with_java.math;
 
 import com.cleverson.automate_tests_with_java.cleverson.SimpleMath;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.test.util.AssertionErrors;
 
 public class SimpleMathTest {
+
+    SimpleMath math;
+    @BeforeAll
+    static void setup(){
+        System.out.println("Running @BeforeAll method!");
+    }
+
+    @AfterAll
+    static void cleanup(){
+        System.out.println("Running @AfterAll method!");
+    }
+// Para instanciar o objeto no inicio da execução
+    @BeforeEach
+    void beforeEachMethod(){
+        math = new SimpleMath();
+        System.out.println("BeforeEach");
+    }
+
+    @AfterEach
+    void afterEachMathod(){
+        System.out.println("Ruuner @AfterEach method!");
+    }
+
 
     @Disabled("TODO: wen still work on it!")
     @Test
@@ -21,7 +41,7 @@ public class SimpleMathTest {
     void testSum_when_SixDotTwoIsAddedByTwo(){
         // AAA Arrange, act Assert
         // Given / Arrange -> Declaração
-        SimpleMath math = new SimpleMath();
+
 
         // When / Act
         Double actual = math.sum(6.2D, 2D);
@@ -35,7 +55,7 @@ public class SimpleMathTest {
     @Test
     @DisplayName("Test 6.2 - 2 = 4.1")
     void testSubtration(){
-        SimpleMath math = new SimpleMath();
+         
         Double actual = math.subtraction(6.2D, 2D);
         double expected = 4.2D;
 
@@ -47,7 +67,7 @@ public class SimpleMathTest {
     @Test
     @DisplayName("Test 6.2 * 2 = 12.4")
     void testMultiplication(){
-        SimpleMath math = new SimpleMath();
+         
         Double actual = math.multiplication(6.2D, 2D);
         double expected = 12.4D;
 
@@ -59,7 +79,7 @@ public class SimpleMathTest {
     @Test
     @DisplayName("Test 6.2/2 = 3.1")
     void testDivision(){
-        SimpleMath math = new SimpleMath();
+         
         Double actual = math.division(6.2D, 2D);
         double expected = 3.1D;
 
@@ -70,7 +90,7 @@ public class SimpleMathTest {
     @Test
     @DisplayName("Test mean (6.2+2)/2  = 4.1")
     void testAVG(){
-        SimpleMath math = new SimpleMath();
+         
         Double actual = math.mean(6.2D, 2D);
         double expected = 4.1D;
 
@@ -82,7 +102,7 @@ public class SimpleMathTest {
     @Test
     @DisplayName("Test square Root of 81 = 9")
     void testSquareRoot(){
-        SimpleMath math = new SimpleMath();
+         
         Double actual = math.squareRoot(81D);
         double expected = 9D;
 
