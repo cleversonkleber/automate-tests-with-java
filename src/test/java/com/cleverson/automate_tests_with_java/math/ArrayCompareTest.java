@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
 public class ArrayCompareTest {
     @Test
@@ -17,7 +18,8 @@ public class ArrayCompareTest {
     }
 
     @Test
-    @Timeout(1)
+//    @Timeout(1)
+    @Timeout(value = 15, unit = TimeUnit.MILLISECONDS)
     void testSortPerformance(){
         int[] numbers={25,8,21,32,3};
         int[] expectedArray={3,8,21,25,32};
